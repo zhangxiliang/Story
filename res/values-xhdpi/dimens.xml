@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="room_gift_size">120</integer>
+    <integer name="room_car_size">120</integer>
+
+    <dimen name="text_size_xb">28dp</dimen>
+    <dimen name="text_size_b">24dp</dimen>
+    <dimen name="text_size_m">20dp</dimen>
+    <dimen name="text_size_s">16dp</dimen>
+    <dimen name="text_size_item_s">14dp</dimen>
+    <dimen name="text_size_room_item_s">14dp</dimen>
+    <dimen name="text_size_xs">12dp</dimen>
+    <dimen name="text_size_xms">10dp</dimen>
+    <dimen name="text_size_xxs">8dp</dimen>
+    <dimen name="text_size_xxxs">6dp</dimen>
+    <dimen name="card_text_size">70dp</dimen>
+    <!-- nexus 4 -->
+
+
+    <!-- login start -->
+    <dimen name="m_btn_padding_left">40dp</dimen>
+    <dimen name="m_btn_padding_right">40dp</dimen>
+    <dimen name="m_btn_padding_top">10dp</dimen>
+    <dimen name="m_btn_padding_bottom">10dp</dimen>
+    <dimen name="first_ll_margin_top">40dp</dimen>
+    <!-- login end -->
+
+
+    <!-- register -->
+
+
+    <!-- about start -->
+    <dimen name="about_copyright_text_size">@dimen/text_size_s</dimen>
+    <!-- about end -->
+
+    <integer name="grade_size">40</integer>
+
+    <dimen name="wrapper_fl_viode_width">320.0dip</dimen>
+    <dimen name="inner_fl_viode_width">320.0dip</dimen>
+
+    <integer name="luck_text_size">45</integer>
+
+    <dimen name="dip_spacing_margin">14dip</dimen>
+    <dimen name="dip_spacing_1">7dip</dimen>
+    <dimen name="dip_width_1">80dip</dimen>
+    <!-- 1280*720上的64px -->
+    <dimen name="dip_height_1">32dip</dimen>
+    <dimen name="dip_height_2">40dip</dimen>
+    <!-- 1280*720上的320px -->
+    <dimen name="dip_width_2">160dip</dimen>
+    <!-- 1280*720上的272px -->
+    <dimen name="dip_width_3">136dip</dimen>
+
+    <!-- ====================== 字体大小 =========================== -->
+
+
+    <!-- 1280*720上的36px -->
+    <dimen name="sp_size_0">18sp</dimen>
+    <!-- 1280*720上的28px -->
+    <dimen name="sp_size_1">14sp</dimen>
+    <!-- 1280*720上的32px -->
+    <dimen name="sp_size_2">16sp</dimen>
+    <!-- 1280*720上的20px -->
+    <dimen name="sp_size_3">10sp</dimen>
+    <!-- 1280*720上的40px -->
+    <dimen name="sp_size_4">20sp</dimen>
+    <!-- 1280*720上的24px -->
+    <dimen name="sp_size_5">12sp</dimen>
+    <!-- 1280*720上的96px -->
+    <dimen name="sp_size_6">48sp</dimen>
+    <!-- 1280*720上的48px -->
+    <dimen name="sp_size_7">24sp</dimen>
+    <!-- 1280*720上的30px -->
+    <dimen name="sp_size_8">15sp</dimen>
+
+    <!-- 宝盒停车场 -->
+    <dimen name="parking_icon_number_padding_right">8dp</dimen>
+    <dimen name="parking_icon_number_padding_top">10dp</dimen>
+    <dimen name="parking_text_number_padding_right">8dp</dimen>
+    <dimen name="parking_text_number_padding_top">10dp</dimen>
+    <dimen name="parking_cars_num_text_size">24dp</dimen>
+    <dimen name="parking_cars_img_width_hight">100dp</dimen>
+    <dimen name="photo_btn_width">120dp</dimen>
+    <dimen name="parking_cars_num_pisition_margin_top">-40dp</dimen>
+    <dimen name="parking_cars_num_hegiht">186dp</dimen>
+    <dimen name="gift_cars_logo_width_height">120dp</dimen>
+
+    <!-- 投票区域尺寸 -->
+    <dimen name="vote_close_btn_margin_top">8dp</dimen>
+    <dimen name="vote_close_btn_margin_right">42dp</dimen>
+    
+       <!--  相册高度-->
+    <dimen name="fl_viode_album">275.0dip</dimen>
+    <dimen name="room_width_dynamic_num">47dp</dimen>
+    <dimen name="room_width_dynamic_num_ll">50dp</dimen>
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="grade_size">60</integer>
+    <integer name="room_car_size">160</integer>
+    <integer name="room_gift_size">200</integer>
+
+    <dimen name="card_text_size">70dp</dimen>
+    <dimen name="wrapper_fl_viode_width">400.0dip</dimen>
+    <dimen name="inner_fl_viode_width">400.0dip</dimen>
+
+    <integer name="luck_text_size">60</integer>
+
+    <dimen name="dip_spacing_margin">15dip</dimen>
+    <dimen name="dip_spacing_1">8dip</dimen>
+    <dimen name="dip_width_1">80dip</dimen>
+    <!-- 1920*1080上的96px -->
+    <dimen name="dip_height_1">32dip</dimen>
+    <dimen name="dip_height_2">40dip</dimen>
+    <!-- 1920*1080上的480px -->
+    <dimen name="dip_width_2">160dip</dimen>
+    <!-- ======================================字体============ -->
+    <!-- 1920*1080上的54px -->
+    <dimen name="sp_size_0">18sp</dimen>
+
+    <!-- 1920*1080上的42px -->
+    <dimen name="sp_size_1">14sp</dimen>
+
+    <!-- 1920*1080上的48px -->
+    <dimen name="sp_size_2">16sp</dimen>
+
+    <!-- 1920*1080上的30px -->
+    <dimen name="sp_size_3">10sp</dimen>
+
+    <!-- 1920*1080上的60px -->
+    <dimen name="sp_size_4">20sp</dimen>
+
+    <!-- 1920*1080上的36px -->
+    <dimen name="sp_size_5">12sp</dimen>
+
+    <!-- 1920*1080上的144px -->
+    <dimen name="sp_size_6">48sp</dimen>
+
+    <!-- 1920*1080上的72px -->
+    <dimen name="sp_size_7">32sp</dimen>
+
+    <!-- 1920*1080上的45px -->
+    <dimen name="sp_size_8">15sp</dimen>
+
+    <!-- 宝盒停车场 -->
+    <dimen name="parking_icon_number_padding_right">10dp</dimen>
+    <dimen name="parking_icon_number_padding_top">10dp</dimen>
+    <dimen name="parking_text_number_padding_right">10dp</dimen>
+    <dimen name="parking_text_number_padding_top">10dp</dimen>
+    <dimen name="parking_cars_num_text_size">24dp</dimen>
+    <dimen name="parking_cars_num_pisition_margin_top">-38dp</dimen>
+    <dimen name="parking_cars_num_hegiht">186dp</dimen>
+
+</resources>
