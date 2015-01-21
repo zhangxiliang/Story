@@ -1,5 +1,7 @@
 package com.wole.story.ui;
 
+import com.umeng.analytics.MobclickAgent;
+
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -152,5 +154,17 @@ public class BaseActivity extends FragmentActivity{
 
 	protected void startActivityForResult(Class<?> cls, int requestCode) {
 		startActivity(cls, null);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 }

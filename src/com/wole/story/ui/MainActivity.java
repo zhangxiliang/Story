@@ -1,5 +1,7 @@
 package com.wole.story.ui;
 
+import com.umeng.update.UmengUpdateAgent;
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +13,9 @@ public class MainActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		UmengUpdateAgent.setDefault();
+		UmengUpdateAgent.update(this);
 		addLoadingView();
 	}
 

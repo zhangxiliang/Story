@@ -56,7 +56,7 @@ public final class R {
 		public static final int message = 0x7f050047;
 		public static final int number_indicator_spinner_content = 0x7f05004e;
 		public static final int red = 0x7f050043;
-		public static final int shape_bacground = 0x7f050052;
+		public static final int shape_bacground = 0x7f050096;
 		public static final int snackbar = 0x7f05004f;
 		public static final int text = 0x7f050051;
 		public static final int title = 0x7f050029;
