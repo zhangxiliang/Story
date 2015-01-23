@@ -2,6 +2,7 @@ package com.wole.story.ui;
 
 import com.umeng.analytics.MobclickAgent;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -12,16 +13,20 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.FrameLayout.LayoutParams;
 
 public class BaseActivity extends FragmentActivity{
 	private FragmentManager mFragmentManager;
 
 	private View mLoadingView;
+	protected Activity mActivity;
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
+		mActivity=this;
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
         mFragmentManager=this.getSupportFragmentManager();
 
 	}
