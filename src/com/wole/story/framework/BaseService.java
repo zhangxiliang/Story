@@ -23,7 +23,6 @@ public class BaseService implements Response.Listener<String>,
 		Response.ErrorListener {
 
 	private BasePostRequest mBasePostRequest;
-	private int requestCode = -1;
 	private TaskCallBack taskCallBack;
 
 	public BaseService(TaskCallBack callBack) {
@@ -37,8 +36,7 @@ public class BaseService implements Response.Listener<String>,
 	/*
 	 * 调用异步请求
 	 */
-	public void sync(String url, int requestCode, HashMap<String, String> params) {
-		this.requestCode = requestCode;
+	public void sync(String url, HashMap<String, String> params) {
 		int method = (params == null) ? Method.GET : Method.POST;
 		mBasePostRequest = new BasePostRequest(method, url, this, this,
 				params);
@@ -53,8 +51,8 @@ public class BaseService implements Response.Listener<String>,
 	/*
 	 * 调用异步请求，默认url
 	 */
-	public void sync(int requestCode, HashMap<String, String> params) {
-		sync(NetConfig.BASE_URL, requestCode, params);
+	public void sync( HashMap<String, String> params) {
+		sync(NetConfig.BASE_URL, params);
 	}
 	
 	/**
@@ -62,26 +60,26 @@ public class BaseService implements Response.Listener<String>,
 	 * @param url
 	 * @param requestCode
 	 */
-	public void syncGet(String url, int requestCode){
-		sync(url, requestCode, null);
+	public void syncGet(String url){
+		sync(url, null);
 	}
 
 	@Override
 	public void onResponse(String arg0) {
 		if (TextUtils.isEmpty(arg0)) {
 			if (taskCallBack != null) {
-				taskCallBack.onError(requestCode, new WoxiuException(
+				taskCallBack.onError(new WoxiuException(
 						"network error"));
 			}
 		} else {
 			try {
 				if (taskCallBack != null) {
-					taskCallBack.onPostExecute(requestCode,
+					taskCallBack.onPostExecute(
 							new JSONObject(arg0));
 				}
 			} catch (JSONException e) {
 				if (taskCallBack != null) {
-					taskCallBack.onError(requestCode, e);
+					taskCallBack.onError( e);
 				}
 			}
 		}
@@ -92,7 +90,7 @@ public class BaseService implements Response.Listener<String>,
 	public void onErrorResponse(VolleyError arg0) {
 		String errorMsg = arg0.getMessage();
 		if (taskCallBack != null) {
-			taskCallBack.onError(requestCode, new WoxiuException(errorMsg));
+			taskCallBack.onError( new WoxiuException(errorMsg));
 		}
 		mBasePostRequest.cancel();
 	}

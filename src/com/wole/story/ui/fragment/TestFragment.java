@@ -38,7 +38,7 @@ public final class TestFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         TextView text = new TextView(getActivity());
         text.setGravity(Gravity.CENTER);
         text.setText(mContent);

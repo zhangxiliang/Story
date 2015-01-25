@@ -14,6 +14,6 @@ import org.json.JSONObject;
 public interface TaskCallBack {
 
 	void onPreExecute();
-	void onPostExecute(int requestCode, JSONObject jsonObject);
-	void onError(int requestCode, Exception result);
+	void onPostExecute(JSONObject jsonObject);
+	void onError( Exception result);
 }

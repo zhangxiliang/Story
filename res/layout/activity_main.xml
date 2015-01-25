@@ -2,12 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.wole.story.ui.SampleTabsDefault" >
+
+    tools:context="com.wole.story.ui.fragment.SampleTabsDefault" >
+    
+  <include layout="@layout/layout_head" android:id="@id/header"/>
   <FrameLayout
+     android:layout_below="@id/header"
             android:orientation="vertical"
             android:id="@+id/content"
             android:layout_width="match_parent"
