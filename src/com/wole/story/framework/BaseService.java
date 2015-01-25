@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.wole.story.utils.Logs;
 
 /**
  * TODO <一句话功能描述>
@@ -38,8 +39,9 @@ public class BaseService implements Response.Listener<String>,
 	 */
 	public void sync(String url, HashMap<String, String> params) {
 		int method = (params == null) ? Method.GET : Method.POST;
-		mBasePostRequest = new BasePostRequest(method, url, this, this,
-				params);
+		
+		mBasePostRequest = new BasePostRequest(method, url, this, this, params);
+		Logs.debug("request url---->"+url);
 		if (mBasePostRequest != null) {
 			if (taskCallBack != null) {
 				taskCallBack.onPreExecute();
@@ -51,36 +53,34 @@ public class BaseService implements Response.Listener<String>,
 	/*
 	 * 调用异步请求，默认url
 	 */
-	public void sync( HashMap<String, String> params) {
+	public void sync(HashMap<String, String> params) {
+		
 		sync(NetConfig.BASE_URL, params);
 	}
-	
+
 	/**
 	 * Get请求
+	 * 
 	 * @param url
 	 * @param requestCode
 	 */
-	public void syncGet(String url){
+	public void syncGet(String url) {
 		sync(url, null);
 	}
 
 	@Override
-	public void onResponse(String arg0) {
-		if (TextUtils.isEmpty(arg0)) {
-			if (taskCallBack != null) {
-				taskCallBack.onError(new WoxiuException(
-						"network error"));
-			}
+	public void onResponse(String response) {
+		if (TextUtils.isEmpty(response)) {
+			taskCallBack.onError(new WoxiuException("network error"));
+
 		} else {
 			try {
-				if (taskCallBack != null) {
-					taskCallBack.onPostExecute(
-							arg0);
-				}
+				Logs.debug(response);
+				taskCallBack.onPostExecute(response);
+
 			} catch (Exception e) {
-				if (taskCallBack != null) {
-					taskCallBack.onError( e);
-				}
+				e.printStackTrace();
+
 			}
 		}
 
@@ -90,7 +90,7 @@ public class BaseService implements Response.Listener<String>,
 	public void onErrorResponse(VolleyError arg0) {
 		String errorMsg = arg0.getMessage();
 		if (taskCallBack != null) {
-			taskCallBack.onError( new WoxiuException(errorMsg));
+			taskCallBack.onError(new WoxiuException(errorMsg));
 		}
 		mBasePostRequest.cancel();
 	}

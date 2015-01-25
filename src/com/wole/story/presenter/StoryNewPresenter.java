@@ -30,13 +30,15 @@ public class StoryNewPresenter extends BasePresenter{
 	
 	
 	public interface INewStory{
-		public void addNewStory(List<Story> storys);
+		public void onNewStory(List<Story> storys);
 	}
 
 
 	@Override
 	public void onPostExecute(String text) {
 	    Log.d("StoryNewPresenter", text);
+	    
+	    
 	}
 	
 }

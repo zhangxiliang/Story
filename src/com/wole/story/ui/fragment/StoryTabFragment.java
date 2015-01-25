@@ -12,12 +12,16 @@ import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.umeng.update.UmengUpdateAgent;
 import com.viewpagerindicator.TabPageIndicator;
 import com.wole.story.entity.Story;
+import com.wole.story.entity.StroyCategory;
+import com.wole.story.presenter.StoryCategoryPresenter;
 import com.wole.story.presenter.StoryNewPresenter;
+import com.wole.story.presenter.StoryCategoryPresenter.IStoryCategory;
 import com.wole.story.presenter.StoryNewPresenter.INewStory;
 import com.wole.story.ui.BaseActivity;
 import com.wole.story.ui.R;
 import com.wole.story.ui.R.id;
 import com.wole.story.ui.R.layout;
+import com.wole.story.utils.Logs;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -33,72 +37,69 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class StoryTabFragment extends BaseFragment implements INewStory{
-     
-    private StoryNewPresenter mStoryPresenter;
-	 private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
+public class StoryTabFragment extends BaseFragment implements INewStory, IStoryCategory {
 
-	 public static StoryTabFragment newInstance(){
-		 StoryTabFragment tabFragment=new StoryTabFragment();
-		 return tabFragment;
-	 }
-	 
-	 
-		@Override
-		public View initViews(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			 mStoryPresenter=new StoryNewPresenter(this);
+	private StoryNewPresenter mStoryPresenter;
+	private StoryCategoryPresenter mCategoryPresenter;
+	private List<StroyCategory> categorys;
+	private ViewPager pager;
+	private TabPageIndicator indicator;
+	private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
 
-			mView=inflater.inflate(R.layout.simple_tabs, null);
+	public static StoryTabFragment newInstance() {
+		StoryTabFragment tabFragment = new StoryTabFragment();
+		return tabFragment;
+	}
 
-	        FragmentPagerAdapter adapter = new GoogleMusicAdapter(mActivity.getSupportFragmentManager());
+	@Override
+	public View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		
+		mView = inflater.inflate(R.layout.simple_tabs, null);
 
-	        ViewPager pager = (ViewPager)mView.findViewById(R.id.pager);
-	        pager.setAdapter(adapter);
+		pager = (ViewPager) mView.findViewById(R.id.pager);
+		indicator = (TabPageIndicator) mView.findViewById(R.id.indicator);
+		indicator.setViewPager(pager);
+		mStoryPresenter = new StoryNewPresenter(this);
+		mCategoryPresenter = new StoryCategoryPresenter(this);
+		mStoryPresenter.reqNewStory();
+		mCategoryPresenter.reqStoryCategroy();
+		return mView;
+	}
 
-	        TabPageIndicator indicator = (TabPageIndicator)mView.findViewById(R.id.indicator);
-	        indicator.setViewPager(pager);
-	        mStoryPresenter.reqNewStory();
-	        return mView;
+	class GoogleMusicAdapter extends FragmentPagerAdapter {
+		public GoogleMusicAdapter(FragmentManager fm) {
+			super(fm);
 		}
 
-	
-
-	    class GoogleMusicAdapter extends FragmentPagerAdapter {
-	        public GoogleMusicAdapter(FragmentManager fm) {
-	            super(fm);
-	        }
-
-	        @Override
-	        public Fragment getItem(int position) {
-	            return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
-	        }
-
-	        @Override
-	        public CharSequence getPageTitle(int position) {
-	            return CONTENT[position % CONTENT.length].toUpperCase();
-	        }
-
-	        @Override
-	        public int getCount() {
-	          return CONTENT.length;
-	        }
-	    }
-
-
-
 		@Override
-		public void addNewStory(List<Story> storys) {
-			
+		public Fragment getItem(int position) {
+			return TestFragment.newInstance(categorys.get(position).getType());
 		}
 
+		@Override
+		public CharSequence getPageTitle(int position) {
+			return categorys.get(position).getType();
+		}
 
+		@Override
+		public int getCount() {
+			return categorys.size();
 
+		}
+	}
 
+	@Override
+	public void onNewStory(List<Story> storys) {
 
-	
-	
-	
-	
+	}
+
+	@Override
+	public void onStoryCategory(List<StroyCategory> categorys) {
+		this.categorys = categorys;
+		/*FragmentPagerAdapter adapter = new GoogleMusicAdapter(mActivity.getSupportFragmentManager());
+		pager.setAdapter(adapter);
+		indicator.setViewPager(pager);*/
+
+	}
 
 }
