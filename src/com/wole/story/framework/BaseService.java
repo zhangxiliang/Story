@@ -75,9 +75,9 @@ public class BaseService implements Response.Listener<String>,
 			try {
 				if (taskCallBack != null) {
 					taskCallBack.onPostExecute(
-							new JSONObject(arg0));
+							arg0);
 				}
-			} catch (JSONException e) {
+			} catch (Exception e) {
 				if (taskCallBack != null) {
 					taskCallBack.onError( e);
 				}

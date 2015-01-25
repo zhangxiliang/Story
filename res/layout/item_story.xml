@@ -5,5 +5,6 @@
     android:background="@drawable/item_story_bg"
     android:orientation="vertical" >
     
+    
 
 </LinearLayout>
