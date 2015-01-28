@@ -44,6 +44,7 @@ public class StoryTabFragment extends BaseFragment implements INewStory, IStoryC
 	private List<StroyCategory> categorys;
 	private ViewPager pager;
 	private TabPageIndicator indicator;
+	FragmentPagerAdapter adapter;
 	private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
 
 	public static StoryTabFragment newInstance() {
@@ -58,7 +59,10 @@ public class StoryTabFragment extends BaseFragment implements INewStory, IStoryC
 
 		pager = (ViewPager) mView.findViewById(R.id.pager);
 		indicator = (TabPageIndicator) mView.findViewById(R.id.indicator);
+		 adapter = new GoogleMusicAdapter(mActivity.getSupportFragmentManager());
+		pager.setAdapter(adapter);
 		indicator.setViewPager(pager);
+		
 		mStoryPresenter = new StoryNewPresenter(this);
 		mCategoryPresenter = new StoryCategoryPresenter(this);
 		mStoryPresenter.reqNewStory();
@@ -73,16 +77,25 @@ public class StoryTabFragment extends BaseFragment implements INewStory, IStoryC
 
 		@Override
 		public Fragment getItem(int position) {
+			if(categorys==null){
+				return null;
+			}
 			return TestFragment.newInstance(categorys.get(position).getType());
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
+			if(categorys==null){
+				return "";
+			}
 			return categorys.get(position).getType();
 		}
 
 		@Override
 		public int getCount() {
+			if(categorys==null){
+				return 0;
+			}
 			return categorys.size();
 
 		}
@@ -96,10 +109,9 @@ public class StoryTabFragment extends BaseFragment implements INewStory, IStoryC
 	@Override
 	public void onStoryCategory(List<StroyCategory> categorys) {
 		this.categorys = categorys;
-		/*FragmentPagerAdapter adapter = new GoogleMusicAdapter(mActivity.getSupportFragmentManager());
-		pager.setAdapter(adapter);
-		indicator.setViewPager(pager);*/
-
+		adapter.notifyDataSetChanged();
+		indicator.setViewPager(pager);
+		indicator.notifyDataSetChanged();
 	}
 
 }
