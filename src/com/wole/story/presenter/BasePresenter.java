@@ -12,7 +12,7 @@ public abstract class  BasePresenter implements TaskCallBack{
 	}
 
 	@Override
-	public abstract void onPostExecute(String text);
+	public abstract void onSuccess(String text);
 
 	@Override
 	public void onError(Exception result) {

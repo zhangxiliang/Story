@@ -12,7 +12,7 @@ import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.umeng.update.UmengUpdateAgent;
 import com.viewpagerindicator.TabPageIndicator;
 import com.wole.story.entity.Story;
-import com.wole.story.entity.StroyCategory;
+import com.wole.story.entity.StoryCategory;
 import com.wole.story.presenter.StoryCategoryPresenter;
 import com.wole.story.presenter.StoryNewPresenter;
 import com.wole.story.presenter.StoryCategoryPresenter.IStoryCategory;
@@ -41,7 +41,7 @@ public class StoryTabFragment extends BaseFragment implements INewStory, IStoryC
 
 	private StoryNewPresenter mStoryPresenter;
 	private StoryCategoryPresenter mCategoryPresenter;
-	private List<StroyCategory> categorys;
+	private List<StoryCategory> categorys;
 	private ViewPager pager;
 	private TabPageIndicator indicator;
 	FragmentPagerAdapter adapter;
@@ -59,7 +59,7 @@ public class StoryTabFragment extends BaseFragment implements INewStory, IStoryC
 
 		pager = (ViewPager) mView.findViewById(R.id.pager);
 		indicator = (TabPageIndicator) mView.findViewById(R.id.indicator);
-		 adapter = new GoogleMusicAdapter(mActivity.getSupportFragmentManager());
+		adapter = new GoogleMusicAdapter(mActivity.getSupportFragmentManager());
 		pager.setAdapter(adapter);
 		indicator.setViewPager(pager);
 		
@@ -80,7 +80,7 @@ public class StoryTabFragment extends BaseFragment implements INewStory, IStoryC
 			if(categorys==null){
 				return null;
 			}
-			return TestFragment.newInstance(categorys.get(position).getType());
+			return TestFragment.newInstance(categorys.get(position));
 		}
 
 		@Override
@@ -107,7 +107,7 @@ public class StoryTabFragment extends BaseFragment implements INewStory, IStoryC
 	}
 
 	@Override
-	public void onStoryCategory(List<StroyCategory> categorys) {
+	public void onStoryCategory(List<StoryCategory> categorys) {
 		this.categorys = categorys;
 		adapter.notifyDataSetChanged();
 		indicator.setViewPager(pager);

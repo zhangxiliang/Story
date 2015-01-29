@@ -76,7 +76,7 @@ public class BaseService implements Response.Listener<String>,
 		} else {
 			try {
 				Logs.debug(response);
-				taskCallBack.onPostExecute(response);
+				taskCallBack.onSuccess(response);
 
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -1,61 +1,66 @@
 package com.wole.story.ui.fragment;
 
+import java.util.List;
+
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.wole.story.adapter.StoryAdapter;
+import com.wole.story.entity.Story;
+import com.wole.story.entity.StoryCategory;
+import com.wole.story.presenter.StoryListPresenter;
+import com.wole.story.presenter.StoryListPresenter.IStoryListListener;
+import com.wole.story.ui.R;
+
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 
-public final class TestFragment extends BaseFragment {
-    private static final String KEY_CONTENT = "TestFragment:Content";
 
-    public static TestFragment newInstance(String content) {
-        TestFragment fragment = new TestFragment();
+public final class TestFragment extends BaseFragment implements IStoryListListener{
+	private static final String KEY_CONTENT = "TestFragment:Content";
 
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < 20; i++) {
-            builder.append(content).append(" ");
-        }
-        builder.deleteCharAt(builder.length() - 1);
-        fragment.mContent = builder.toString();
+	private PullToRefreshListView mListView;
+	private StoryListPresenter mStoryListPresenter;
+	private StoryCategory mStoryCategory;
+	private StoryAdapter mAdapter;
 
-        return fragment;
-    }
+	public static TestFragment newInstance(StoryCategory storyCategory) {
+		TestFragment fragment = new TestFragment();
+		Bundle bundle=new Bundle();
+		bundle.putSerializable("category", storyCategory);
+		return fragment;
+	}
 
-    private String mContent = "???";
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+	}
 
-        if ((savedInstanceState != null) && savedInstanceState.containsKey(KEY_CONTENT)) {
-            mContent = savedInstanceState.getString(KEY_CONTENT);
-        }
-    }
+	@Override
+	public View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		mView = inflater.inflate(R.layout.fragment_story_list, null);
+		mListView = (PullToRefreshListView) mView.findViewById(R.id.story_listview);
+		mAdapter=new StoryAdapter(mActivity);
+		mListView.setAdapter(mAdapter);
+		
+		mStoryListPresenter=new StoryListPresenter(mActivity);
+		this.mStoryCategory=(StoryCategory)getArguments().getSerializable("category");
+		mStoryListPresenter.reqStoryList(mStoryCategory);
+		return mView;
 
-    @Override
-    public View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        TextView text = new TextView(getActivity());
-        text.setGravity(Gravity.CENTER);
-        text.setText(mContent);
-        text.setTextSize(20 * getResources().getDisplayMetrics().density);
-        text.setPadding(20, 20, 20, 20);
+	}
 
-        LinearLayout layout = new LinearLayout(getActivity());
-        layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-        layout.setGravity(Gravity.CENTER);
-        layout.addView(text);
 
-        return layout;
-    }
+	@Override
+	public void onStoryList(List<Story> storys) {
+		mAdapter.appendToList(storys);
+	}
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString(KEY_CONTENT, mContent);
-    }
+
+	@Override
+	public void onMoreStoryList(List<Story> storys) {
+		mAdapter.appendToList(storys);
+	}
 }

@@ -10,7 +10,7 @@ import org.jsoup.nodes.Element;
 
 import com.wole.story.config.CommonConfig;
 import com.wole.story.entity.Story;
-import com.wole.story.entity.StroyCategory;
+import com.wole.story.entity.StoryCategory;
 import com.wole.story.framework.BaseService;
 import com.wole.story.presenter.StoryNewPresenter.INewStory;
 import com.wole.story.utils.JsoupUtil;
@@ -30,11 +30,11 @@ public class StoryCategoryPresenter extends BasePresenter {
 	}
 
 	public interface IStoryCategory {
-		public void onStoryCategory(List<StroyCategory> storys);
+		public void onStoryCategory(List<StoryCategory> storys);
 	}
 
 	@Override
-	public void onPostExecute(String text) {
+	public void onSuccess(String text) {
 		Logs.debug(text);
 
 		Document document = JsoupUtil.parse(text);
@@ -44,11 +44,11 @@ public class StoryCategoryPresenter extends BasePresenter {
 
 	}
 
-	private List<StroyCategory> getCategoryList(Document document) {
+	private List<StoryCategory> getCategoryList(Document document) {
 
-		List<StroyCategory> categorys = new ArrayList<StroyCategory>();
+		List<StoryCategory> categorys = new ArrayList<StoryCategory>();
 		for (Element element : document.getElementById("shoppintcar_step").getElementsByTag("dd").get(1).getElementsByTag("a")) {
-			StroyCategory stroyCategory = new StroyCategory();
+			StoryCategory stroyCategory = new StoryCategory();
 			stroyCategory.setType(element.text());
 			stroyCategory.setUrl(String.valueOf(CommonConfig.BASE_URL) + element.attr("href"));
 			categorys.add(stroyCategory);
