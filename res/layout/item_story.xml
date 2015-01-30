@@ -8,6 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/article_title_tv"
         android:gravity="center"
         android:text="这是个标题"
         android:textColor="@color/black"
@@ -21,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/read_num_tv"
+            android:id="@+id/article_num_tv"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:background="@color/common_green"
@@ -38,7 +39,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/read_num_tv"
+            android:layout_toRightOf="@id/article_num_tv"
+            android:id="@+id/article_priview_tv"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"

@@ -16,14 +16,16 @@ public class StoryPresenter extends BasePresenter {
 
 	private IStoryListener mIStoryListener;
 
-	public StoryPresenter(Context context) {
-		mIStoryListener = (IStoryListener) context;
+	public StoryPresenter(IStoryListener mIStoryListener) {
+		this.mIStoryListener = mIStoryListener;
 	}
 
 	public void reqStory(String url) {
 		BaseService task = new BaseService(this);
 		task.sync(url, null);
 	}
+	
+	
 
 	@Override
 	public void onSuccess(String text) {

@@ -43,9 +43,7 @@ public class BaseService implements Response.Listener<String>,
 		mBasePostRequest = new BasePostRequest(method, url, this, this, params);
 		Logs.debug("request url---->"+url);
 		if (mBasePostRequest != null) {
-			if (taskCallBack != null) {
-				taskCallBack.onPreExecute();
-			}
+		
 			VolleyUtil.syncRequest(mBasePostRequest);
 		}
 	}

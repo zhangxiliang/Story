@@ -13,7 +13,6 @@ import org.json.JSONObject;
  */
 public interface TaskCallBack {
 
-	void onPreExecute();
 	void onError( Exception result);
 	void onSuccess(String text);
 }

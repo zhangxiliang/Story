@@ -12,6 +12,7 @@ public class Story
   private String title;
   private String url;
   private int viewCount;
+ 
 
   public String getAuthor()
   {
