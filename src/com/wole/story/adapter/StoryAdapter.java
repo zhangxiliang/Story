@@ -2,9 +2,11 @@ package com.wole.story.adapter;
 
 import com.wole.story.entity.Story;
 import com.wole.story.ui.R;
+import com.wole.story.utils.Logs;
 import com.wole.story.utils.ViewHolderHelper;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +31,11 @@ public class StoryAdapter extends AdapterBase<Story> {
 		
 		titleTv.setText(story.getTitle());
 		numTv.setText(String.valueOf(story.getViewCount()));
-		//String priview=story.getContent().substring(0, 100);
-		//priviewTv.setText(priview);
+		Logs.error("story.getContent()="+story.getContent());
+		if(story.getContent()!=null && story.getContent().length()>80){
+			String priview=story.getContent().substring(0, 80);
+			//priviewTv.setText(Html.fromHtml(priview));
+		}
 		
 		return convertView;
 	}

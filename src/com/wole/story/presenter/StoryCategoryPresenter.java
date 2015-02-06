@@ -9,10 +9,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import com.wole.story.config.CommonConfig;
-import com.wole.story.entity.Story;
 import com.wole.story.entity.StoryCategory;
 import com.wole.story.framework.BaseService;
-import com.wole.story.presenter.StoryNewPresenter.INewStory;
 import com.wole.story.utils.JsoupUtil;
 import com.wole.story.utils.Logs;
 

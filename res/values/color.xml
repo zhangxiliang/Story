@@ -9,6 +9,7 @@
     <color name="text_hint_color">#a9a9a9</color>
     <color name="white">#ffffffff</color>
     <color name="black">#ff000000</color>
+    <color name="light_gray">#ffbbbbbb</color>
     <color name="black_transparent">#7f000000</color>
     <color name="red">#ffff0000</color>
     <color name="blue">#ff0000ff</color>

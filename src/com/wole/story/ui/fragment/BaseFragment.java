@@ -2,7 +2,9 @@ package com.wole.story.ui.fragment;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -14,9 +16,12 @@ public abstract class BaseFragment extends Fragment{
 	protected FragmentActivity mActivity;
 	protected View mView;
 	protected LayoutInflater mLayoutInflater;
+	protected Handler mUiHandler;
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		mUiHandler=new Handler();
 		mActivity=this.getActivity();
 		mLayoutInflater = LayoutInflater.from(mActivity);
 	}
@@ -42,4 +47,9 @@ public abstract class BaseFragment extends Fragment{
 	public abstract View initViews(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState);
 	
+	
+	protected void startActivity(Class clazz){
+		Intent intent=new Intent(mActivity,clazz);
+		startActivity(intent);
+	}
 }

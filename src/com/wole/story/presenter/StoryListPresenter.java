@@ -17,12 +17,14 @@ import com.wole.story.entity.Story;
 import com.wole.story.entity.StoryCategory;
 import com.wole.story.framework.BaseService;
 import com.wole.story.framework.TaskCallBack;
+import com.wole.story.presenter.StoryPresenter.IStoryListener;
 import com.wole.story.utils.JsoupUtil;
 @SuppressWarnings("unchecked")
-public class StoryListPresenter extends BasePresenter {
+public class StoryListPresenter extends BasePresenter implements IStoryListener{
 
 	private IStoryListListener mIStoryListListener;
 	private StoryCategory mStoryCategory;
+	private StoryPresenter mStoryPresenter;
 	private int visibleLastIndex = 0;
 	private boolean isloading = false;
 	private String cbopage = "ctl00$ContentPlaceHolder1$GSHPageController_PopAuthor$cboPage";
@@ -78,7 +80,6 @@ public class StoryListPresenter extends BasePresenter {
 		Elements select = document.getElementsByTag("form").select("[method=post]").first().select("input[name]");
 		HashMap<String, String> hashMap = new HashMap<String, String>();
 		for (Element element : select) {
-			System.out.println("key--" + element.attr("name") + "---value--" + element.attr("value"));
 			hashMap.put(element.attr("name"), element.attr("value"));
 		}
 		return hashMap;
@@ -93,11 +94,12 @@ public class StoryListPresenter extends BasePresenter {
 		mStoryCategory.setParamMap(getPageParamsList(document));
 		mStoryCategory.setTotal(getTotalCount(document));
 
-		ArrayList<Story> list = new ArrayList<Story>();
+		final ArrayList<Story> list = new ArrayList<Story>();
 		Elements elementsByTag = document.getElementsByClass("table2").first().getElementsByTag("tr");
 		elementsByTag.remove(0);
 		Iterator<Element> iterator = elementsByTag.iterator();
 		while (iterator.hasNext()) {
+			
 			Elements elementsByTag2 = iterator.next().getElementsByTag("td");
 			Story story = new Story();
 			story.setTitle(elementsByTag2.get(1).text());
@@ -105,6 +107,9 @@ public class StoryListPresenter extends BasePresenter {
 			story.setViewCount(Integer.parseInt(elementsByTag2.get(3).text()));
 			story.setDate(elementsByTag2.get(6).text());
 			story.setUrl(String.valueOf(CommonConfig.BASE_URL) + elementsByTag2.get(1).child(0).attr("href"));
+			
+			/*StoryPresenter mStoryPresenter=new StoryPresenter(story);
+			mStoryPresenter.reqStory(story.getUrl());*/
 			list.add(story);
 		}
 		return list;
@@ -132,6 +137,12 @@ public class StoryListPresenter extends BasePresenter {
 		public void onStoryList(List<Story> storys);
 
 		public void onMoreStoryList(List<Story> storys);
+	}
+
+	@Override
+	public void onStory(Story story) {
+		
+		
 	}
 
 }

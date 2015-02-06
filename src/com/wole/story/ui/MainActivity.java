@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 import com.umeng.update.UmengUpdateAgent;
 import com.viewpagerindicator.TabPageIndicator;
+import com.wole.story.ui.fragment.MainFragment;
 import com.wole.story.ui.fragment.StoryTabFragment;
-import com.wole.story.ui.fragment.TestFragment;
 import com.wole.story.utils.ActivtyUtil;
 import com.wole.story.utils.ToastOf56;
 
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void intFragement(){
-    	mTabFragmet=StoryTabFragment.newInstance();
+    	mTabFragmet=MainFragment.newInstance();
     	addFragment(R.id.content, mTabFragmet);
     }
     

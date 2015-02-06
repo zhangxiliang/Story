@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
        <item name="header" type="id"></item>
-    
-    
+       <item type="id" name="article_list">false</item>
+    <item type="id" name="progressbar">false</item>
+    <item type="id" name="top_bar_text">false</item>
+    <item type="id" name="article_item">false</item>
+    <item type="id" name="story_hot">false</item>
+    <item type="id" name="story_author">false</item>
+    <item type="id" name="story_time">false</item>
+    <item type="id" name="story_viewcount">false</item>
+    <item type="id" name="author_list">false</item>
+    <item type="id" name="tv">false</item>
+    <item type="id" name="layout">false</item>
+    <item type="id" name="top_bar">false</item>
+    <item type="id" name="tv_index">false</item>
+    <item type="id" name="author_item">false</item>
+    <item type="id" name="category_item">false</item>
+    <item type="id" name="containerBody">false</item>
+    <item type="id" name="category_list">false</item>
+    <item type="id" name="radioGroup">false</item>
+    <item type="id" name="story_index">false</item>
+    <item type="id" name="story_catgory">false</item>
+    <item type="id" name="story_setting">false</item>
+    <item type="id" name="pg">false</item>
+    <item type="id" name="text_load">false</item>
+    <item type="id" name="newest_list">false</item>
+    <item type="id" name="top_bar_newest">false</item>
+    <item type="id" name="size_layout">false</item>
+    <item type="id" name="fonts_size">false</item>
+    <item type="id" name="check_img">false</item>
+    <item type="id" name="fonts_layout">false</item>
+    <item type="id" name="fonts">false</item>
+    <item type="id" name="check_img2">false</item>
+    <item type="id" name="seek_layout">false</item>
+    <item type="id" name="fontSize">false</item>
+    <item type="id" name="seekBar">false</item>
+    <item type="id" name="radio_layout">false</item>
+    <item type="id" name="font_group">false</item>
+    <item type="id" name="girl_font">false</item>
+    <item type="id" name="sys_font">false</item>
+    <item type="id" name="story_title">false</item>
+    <item type="id" name="story_writer">false</item>
+    <item type="id" name="story_content">false</item>
+    <item type="id" name="mj_layout">false</item>
 </resources>

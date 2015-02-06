@@ -45,8 +45,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:gravity="center"
-            android:text="欢迎使用渠道服务
-40万商家的选择，共享至尊宝快捷周到的服务"
+            android:text=""
             android:textColor="@color/common_666"
             android:textSize="@dimen/phone_sc_14sp" />
     </RelativeLayout>
