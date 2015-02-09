@@ -31,9 +31,10 @@ public class StoryAdapter extends AdapterBase<Story> {
 		
 		titleTv.setText(story.getTitle());
 		numTv.setText(String.valueOf(story.getViewCount()));
-		Logs.error("story.getContent()="+story.getContent());
-		if(story.getContent()!=null && story.getContent().length()>80){
-			String priview=story.getContent().substring(0, 80);
+		//Logs.error("story.getContent()="+story.getContent());
+		priviewTv.setText(story.getAuthor());
+		if(story.getContent()!=null && story.getContent().length()>50){
+			//String priview=story.getContent().substring(0, 50);
 			//priviewTv.setText(Html.fromHtml(priview));
 		}
 		

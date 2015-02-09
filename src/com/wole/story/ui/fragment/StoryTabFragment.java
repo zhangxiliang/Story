@@ -35,6 +35,7 @@ public final class StoryTabFragment extends BaseFragment implements IStoryListLi
 	private boolean isloading;
 	private int total;
 	private View mLoadMoreView;
+	
 
 	public static StoryTabFragment newInstance(StoryCategory storyCategory) {
 		StoryTabFragment fragment = new StoryTabFragment();
@@ -89,8 +90,8 @@ public final class StoryTabFragment extends BaseFragment implements IStoryListLi
 	public void onMoreStoryList(List<Story> storys) {		
 		mAdapter.appendToList(storys);
 		mListView.getRefreshableView().removeFooterView(mLoadMoreView);
-		
 		isloading=false;
+		
 		//refreshListView();
 	}
 

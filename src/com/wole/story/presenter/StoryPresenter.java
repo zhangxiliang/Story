@@ -21,6 +21,9 @@ public class StoryPresenter extends BasePresenter {
 		this.mIStoryListener=mIStoryListener;
 	}
 
+	public StoryPresenter(Story story){
+		this.story=story;
+	}
 	public void reqStory(String url) {
 		BaseService task = new BaseService(this);
 		task.sync(url, null);
@@ -31,14 +34,14 @@ public class StoryPresenter extends BasePresenter {
 	public void onSuccess(String text) {
 		Document document = JsoupUtil.parse(text);
 		parseDocument(document);
-		if (document != null) {
+		if (document != null && mIStoryListener!=null) {
 			mIStoryListener.onStory(parseDocument(document));
 		}
 	}
 
 	public Story parseDocument(Document document) {
 		Elements elementsByClass = document.getElementsByClass("main_txt");
-		Story story=new Story();
+		//Story story=new Story();
 		StringBuffer sb = new StringBuffer();
 		Elements elementsByTag = elementsByClass.first().getElementsByTag("div");
 		String text = elementsByClass.get(0).getElementsByTag("h1").get(0).text();

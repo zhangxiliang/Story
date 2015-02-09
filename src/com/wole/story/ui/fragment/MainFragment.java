@@ -1,5 +1,6 @@
 package com.wole.story.ui.fragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -43,9 +44,10 @@ public class MainFragment extends BaseFragment implements INewStory, IStoryCateg
 	private StoryNewPresenter mStoryPresenter;
 	private StoryCategoryPresenter mCategoryPresenter;
 	private List<StoryCategory> categorys;
+	private List<Fragment> mTabFragmentList;
 	private ViewPager pager;
 	private TabPageIndicator indicator;
-	FragmentStatePagerAdapter adapter;
+	FragmentPagerAdapter adapter;
 	
 	private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
 
@@ -62,6 +64,7 @@ public class MainFragment extends BaseFragment implements INewStory, IStoryCateg
 		pager = (ViewPager) mView.findViewById(R.id.pager);
 		indicator = (TabPageIndicator) mView.findViewById(R.id.indicator);
 		adapter = new CategoryAdapter(mActivity.getSupportFragmentManager());
+		mTabFragmentList=new ArrayList<Fragment>();
 		pager.setAdapter(adapter);
 		indicator.setViewPager(pager);
 		
@@ -72,9 +75,13 @@ public class MainFragment extends BaseFragment implements INewStory, IStoryCateg
 		return mView;
 	}
 
-	class CategoryAdapter extends FragmentStatePagerAdapter {
+	class CategoryAdapter extends FragmentPagerAdapter {
 	
-		
+
+		@Override
+		public Object instantiateItem(View container, int position) {
+			return super.instantiateItem(container, position);
+		}
 
 		public CategoryAdapter(FragmentManager fm) {
 			super(fm);
@@ -86,7 +93,7 @@ public class MainFragment extends BaseFragment implements INewStory, IStoryCateg
 			if(categorys==null){
 				return null;
 			}
-			return StoryTabFragment.newInstance(categorys.get(position));
+			return mTabFragmentList.get(position);
 		}
 
 		@Override
@@ -115,6 +122,9 @@ public class MainFragment extends BaseFragment implements INewStory, IStoryCateg
 	@Override
 	public void onStoryCategory(List<StoryCategory> categorys) {
 		this.categorys = categorys;
+		for(StoryCategory category:categorys){
+			mTabFragmentList.add(StoryTabFragment.newInstance(category));
+		}
 		adapter.notifyDataSetChanged();
 		indicator.setViewPager(pager);
 		indicator.notifyDataSetChanged();

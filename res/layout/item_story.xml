@@ -3,27 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/item_story_bg"
+    android:paddingBottom="12dp"
     android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/article_title_tv"
-        android:gravity="center"
-        android:text="这是个标题"
-        android:textColor="@color/black"
-        android:textSize="@dimen/phone_sc_18sp" />
+ 
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp" >
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+       >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/article_num_tv"
-            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:background="@color/common_green"
             android:gravity="center"
@@ -35,19 +32,29 @@
             android:text="235"
             android:textColor="@color/white"
             android:textSize="@dimen/phone_sc_14sp" />
-
-        <TextView
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/article_title_tv"
+       android:layout_centerInParent="true"
+        android:text="这是个标题"
+        android:textColor="@color/black"
+        android:textSize="@dimen/phone_sc_18sp" />
+   
+       <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/article_num_tv"
             android:id="@+id/article_priview_tv"
+            android:layout_marginTop="20dp"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
             android:gravity="center"
-            android:text=""
+            android:text="作者"
+            android:visibility="visible"
             android:textColor="@color/common_666"
             android:textSize="@dimen/phone_sc_14sp" />
+       
     </RelativeLayout>
+    
+ 
 
 </LinearLayout>

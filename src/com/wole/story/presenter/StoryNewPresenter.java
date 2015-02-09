@@ -36,7 +36,7 @@ public class StoryNewPresenter extends BasePresenter{
 
 	@Override
 	public void onSuccess(String text) {
-	    Log.d("StoryNewPresenter", text);
+	   // Log.d("StoryNewPresenter", text);
 	    
 	    
 	}

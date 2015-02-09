@@ -73,7 +73,7 @@ public class BaseService implements Response.Listener<String>,
 
 		} else {
 			try {
-				Logs.debug(response);
+				//Logs.debug(response);
 				taskCallBack.onSuccess(response);
 
 			} catch (Exception e) {

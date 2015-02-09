@@ -108,8 +108,8 @@ public class StoryListPresenter extends BasePresenter implements IStoryListener{
 			story.setDate(elementsByTag2.get(6).text());
 			story.setUrl(String.valueOf(CommonConfig.BASE_URL) + elementsByTag2.get(1).child(0).attr("href"));
 			
-			/*StoryPresenter mStoryPresenter=new StoryPresenter(story);
-			mStoryPresenter.reqStory(story.getUrl());*/
+			//StoryPresenter mStoryPresenter=new StoryPresenter(story);
+			//mStoryPresenter.reqStory(story.getUrl());
 			list.add(story);
 		}
 		return list;
