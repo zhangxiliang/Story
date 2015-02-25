@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/white"
+    android:background="@color/color_day_bg"
     android:orientation="vertical" >
     <include layout="@layout/layout_load"/>
         <RelativeLayout
                 android:layout_width="fill_parent"
                 android:id="@+id/nav_rl"
-                android:background="@color/white"
+                android:background="@color/color_day_bg"
                 android:layout_height="wrap_content" >
 
                 <TextView
@@ -16,7 +16,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="文章名称"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="25.0sp" />
 
@@ -24,7 +24,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/story_title"
-                    android:layout_marginTop="10.0dip"
+                    android:layout_marginTop="5.0dip"
+                    android:layout_marginBottom="5dp"
                     android:background="@color/light_gray" >
 
                     <TextView
@@ -52,7 +53,6 @@
         android:layout_below="@id/nav_rl"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="23.0dip"
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical" >
 

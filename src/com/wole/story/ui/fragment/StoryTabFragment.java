@@ -14,10 +14,12 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.wole.story.adapter.StoryAdapter;
+import com.wole.story.db.StoryDao;
 import com.wole.story.entity.Story;
 import com.wole.story.entity.StoryCategory;
 import com.wole.story.presenter.StoryListPresenter;
 import com.wole.story.presenter.StoryListPresenter.IStoryListListener;
+import com.wole.story.ui.LoginActivity;
 import com.wole.story.ui.R;
 import com.wole.story.ui.StoryActivity;
 import com.wole.story.utils.Logs;
@@ -35,6 +37,7 @@ public final class StoryTabFragment extends BaseFragment implements IStoryListLi
 	private boolean isloading;
 	private int total;
 	private View mLoadMoreView;
+	private StoryDao mStoryDao;
 	
 
 	public static StoryTabFragment newInstance(StoryCategory storyCategory) {
@@ -48,6 +51,7 @@ public final class StoryTabFragment extends BaseFragment implements IStoryListLi
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Logs.info("StoryTabFragment onCreate");
 
 	}
 
@@ -60,7 +64,7 @@ public final class StoryTabFragment extends BaseFragment implements IStoryListLi
 		mListView.setOnScrollListener(this);
 		mAdapter = new StoryAdapter(mActivity);
 		mListView.setAdapter(mAdapter);
-
+		mStoryDao=new StoryDao();
 		mStoryListPresenter = new StoryListPresenter(this);
 		this.mStoryCategory = (StoryCategory) getArguments().getSerializable("category");
 		mStoryListPresenter.reqStoryList(mStoryCategory);
@@ -69,9 +73,17 @@ public final class StoryTabFragment extends BaseFragment implements IStoryListLi
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				
+				if(!mStoryApplication.isLoginUser()){
+					Intent intent=new Intent(mActivity,LoginActivity.class);
+					startActivity(intent);
+					return ;
+				}
+				Story story=mAdapter.getItem(position-1);
+				story.setReaded(true);
+				mAdapter.notifyDataSetChanged();
+				mStoryDao.add(story);
 				Intent intent=new Intent(mActivity,StoryActivity.class);
-				intent.putExtra("story", mAdapter.getItem(position));
+				intent.putExtra("story", story);
 				startActivity(intent);
 			}
 			

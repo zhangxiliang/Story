@@ -43,10 +43,11 @@ public class MainFragment extends BaseFragment implements INewStory, IStoryCateg
 
 	private StoryNewPresenter mStoryPresenter;
 	private StoryCategoryPresenter mCategoryPresenter;
-	private List<StoryCategory> categorys;
+	private  List<StoryCategory> categorys;
 	private List<Fragment> mTabFragmentList;
 	private ViewPager pager;
 	private TabPageIndicator indicator;
+	
 	FragmentPagerAdapter adapter;
 	
 	private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
@@ -60,14 +61,13 @@ public class MainFragment extends BaseFragment implements INewStory, IStoryCateg
 	public View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		
 		mView = inflater.inflate(R.layout.simple_tabs, null);
-
+        Logs.info("MainFragment initViews");
 		pager = (ViewPager) mView.findViewById(R.id.pager);
 		indicator = (TabPageIndicator) mView.findViewById(R.id.indicator);
 		adapter = new CategoryAdapter(mActivity.getSupportFragmentManager());
 		mTabFragmentList=new ArrayList<Fragment>();
 		pager.setAdapter(adapter);
 		indicator.setViewPager(pager);
-		
 		mStoryPresenter = new StoryNewPresenter(this);
 		mCategoryPresenter = new StoryCategoryPresenter(this);
 		mStoryPresenter.reqNewStory();
@@ -75,6 +75,7 @@ public class MainFragment extends BaseFragment implements INewStory, IStoryCateg
 		return mView;
 	}
 
+	
 	class CategoryAdapter extends FragmentPagerAdapter {
 	
 
@@ -93,6 +94,8 @@ public class MainFragment extends BaseFragment implements INewStory, IStoryCateg
 			if(categorys==null){
 				return null;
 			}
+			Logs.error("getItem="+position);
+		
 			return mTabFragmentList.get(position);
 		}
 
@@ -112,6 +115,13 @@ public class MainFragment extends BaseFragment implements INewStory, IStoryCateg
 			return categorys.size();
 
 		}
+
+		@Override
+		public void destroyItem(ViewGroup container, int position, Object object) {
+            Logs.error("destroyItem="+position);
+			super.destroyItem(container, position, object);
+		}
+		
 	}
 
 	@Override

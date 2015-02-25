@@ -153,6 +153,14 @@ public class CommonUtils {
 	        return isInstallShortcut ;
 	}
 	
+	public static boolean isEmail(String email) {
+		String str = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
+		Pattern p = Pattern.compile(str);
+		Matcher m = p.matcher(email);
+
+		return m.matches();
+		}
+	
 	/** 
      * 为程序创建桌面快捷方式 
      */ 
@@ -186,5 +194,12 @@ public class CommonUtils {
 		int s = random.nextInt(100000) + 1;
 		return s;
     }
-
+	  public static int px2sp(Context context, float pxValue) {  
+	        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;  
+	        return (int) (pxValue / fontScale + 0.5f);  
+	    }  
+	  public static int sp2px(Context context, float spValue) {  
+	        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;  
+	        return (int) (spValue * fontScale + 0.5f);  
+	    }  
 }

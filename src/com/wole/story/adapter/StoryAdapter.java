@@ -15,8 +15,10 @@ import android.widget.TextView;
 public class StoryAdapter extends AdapterBase<Story> {
 
 	private LayoutInflater inflater;
+	private Context mContext;
 	public StoryAdapter(Context context){
 		inflater=LayoutInflater.from(context);
+		this.mContext=context;
 	}
 	@Override
 	protected View getExView(int position, View convertView, ViewGroup parent) {
@@ -33,10 +35,23 @@ public class StoryAdapter extends AdapterBase<Story> {
 		numTv.setText(String.valueOf(story.getViewCount()));
 		//Logs.error("story.getContent()="+story.getContent());
 		priviewTv.setText(story.getAuthor());
+		
+		if(story.isReaded()){
+			numTv.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
+			numTv.setTextColor(mContext.getResources().getColor(R.color.white));
+			titleTv.setTextColor(mContext.getResources().getColor(R.color.gray));
+			priviewTv.setTextColor(mContext.getResources().getColor(R.color.gray));
+		}else{
+			numTv.setBackgroundColor(mContext.getResources().getColor(R.color.color_pager_bg1));
+			numTv.setTextColor(mContext.getResources().getColor(R.color.white));
+			titleTv.setTextColor(mContext.getResources().getColor(R.color.black));
+			priviewTv.setTextColor(mContext.getResources().getColor(R.color.common_666));
+		}
 		if(story.getContent()!=null && story.getContent().length()>50){
 			//String priview=story.getContent().substring(0, 50);
 			//priviewTv.setText(Html.fromHtml(priview));
 		}
+		
 		
 		return convertView;
 	}

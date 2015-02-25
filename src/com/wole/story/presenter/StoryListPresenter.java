@@ -12,6 +12,7 @@ import org.jsoup.select.Elements;
 
 import android.content.Context;
 
+import com.wole.story.app.StoryApplication;
 import com.wole.story.config.CommonConfig;
 import com.wole.story.entity.Story;
 import com.wole.story.entity.StoryCategory;
@@ -112,9 +113,32 @@ public class StoryListPresenter extends BasePresenter implements IStoryListener{
 			//mStoryPresenter.reqStory(story.getUrl());
 			list.add(story);
 		}
-		return list;
+		
+		return addParam(list);
 	}
 
+	
+	private List<Story> addParam(List<Story> storys){
+		for(Story story :storys){
+			if(inReadList(story.getUrl())){
+				story.setReaded(true);
+			}else{
+				story.setReaded(false);
+			}
+		}
+		
+		return storys;
+	}
+	
+	private boolean inReadList(String url){
+		List<Story> readList=StoryApplication.getInstance().getmReadList();
+		for(Story story :readList){
+			if(story.getUrl().equals(url)){
+				return true;
+			}
+		}
+		return false;
+	}
 	private TaskCallBack taskCallBack=new TaskCallBack() {
 		
 		@Override

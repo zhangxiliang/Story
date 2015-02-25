@@ -2,80 +2,85 @@ package com.wole.story.entity;
 
 import java.io.Serializable;
 
-public class Story
-  implements Serializable
-{
-  private static final long serialVersionUID = 1L;
-  private String Author;
-  private String content;
-  private String date;
-  private String title;
-  private String url;
-  private int viewCount;
- 
+import com.avos.avoscloud.AVObject;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
-  public String getAuthor()
-  {
-    return this.Author;
-  }
+@DatabaseTable(tableName = "Story")
+public class Story extends AVObject implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@DatabaseField
+	private String Author;
+	@DatabaseField
+	private String content;
+	@DatabaseField
+	private String date;
+	@DatabaseField
+	private String title;
+	@DatabaseField(id=true)
+	private String url;
+	@DatabaseField
+	private boolean isReaded;
+	@DatabaseField
+	private int viewCount;
 
-  public String getContent()
-  {
-    return this.content;
-  }
+	public String getAuthor() {
+		return this.Author;
+	}
 
-  public String getDate()
-  {
-    return this.date;
-  }
+	public String getContent() {
+		return this.content;
+	}
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+	public String getDate() {
+		return this.date;
+	}
 
-  public String getUrl()
-  {
-    return this.url;
-  }
+	public String getTitle() {
+		return this.title;
+	}
 
-  public int getViewCount()
-  {
-    return this.viewCount;
-  }
+	public String getUrl() {
+		return this.url;
+	}
 
-  public void setAuthor(String paramString)
-  {
-    this.Author = paramString;
-  }
+	public int getViewCount() {
+		return this.viewCount;
+	}
 
-  public void setContent(String paramString)
-  {
-    this.content = paramString;
-  }
+	public void setAuthor(String paramString) {
+		this.Author = paramString;
+	}
 
-  public void setDate(String paramString)
-  {
-    this.date = paramString;
-  }
+	public void setContent(String paramString) {
+		this.content = paramString;
+	}
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+	public void setDate(String paramString) {
+		this.date = paramString;
+	}
 
-  public void setUrl(String paramString)
-  {
-    this.url = paramString;
-  }
+	public void setTitle(String paramString) {
+		this.title = paramString;
+	}
 
-  public void setViewCount(int paramInt)
-  {
-    this.viewCount = paramInt;
-  }
+	public void setUrl(String paramString) {
+		this.url = paramString;
+	}
 
-  public String toString()
-  {
-    return "Story [title=" + this.title + ", Author=" + this.Author + ", date=" + this.date + ", url=" + this.url + "]";
-  }
+	public void setViewCount(int paramInt) {
+		this.viewCount = paramInt;
+	}
+
+	public boolean isReaded() {
+		return isReaded;
+	}
+
+	public void setReaded(boolean isReaded) {
+		this.isReaded = isReaded;
+	}
+
+	public String toString() {
+		return "Story [title=" + this.title + ", Author=" + this.Author + ", date=" + this.date + ", url=" + this.url + "]";
+	}
 }

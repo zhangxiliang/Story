@@ -12,8 +12,8 @@
     <!-- login start -->
     <dimen name="m_btn_padding_left">40dp</dimen>
     <dimen name="m_btn_padding_right">40dp</dimen>
-    <dimen name="m_btn_padding_top">5dp</dimen>
-    <dimen name="m_btn_padding_bottom">5dp</dimen>
+    <dimen name="m_btn_padding_top">10dp</dimen>
+    <dimen name="m_btn_padding_bottom">10dp</dimen>
     <dimen name="first_ll_margin_top">30dp</dimen>
     <!-- login end -->
 

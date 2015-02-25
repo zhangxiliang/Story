@@ -20,7 +20,7 @@
    		<item name="android:dividerHeight">0px</item>
    		<item name="android:textColor">@color/white</item>
     </style>
-     <style name="StyledIndicators" parent="@android:style/Theme.Light">
+     <style name="StyledIndicators" parent="Theme.Base.AppCompat.Light">
         <item name="vpiCirclePageIndicatorStyle">@style/CustomCirclePageIndicator</item>
         <item name="vpiLinePageIndicatorStyle">@style/CustomLinePageIndicator</item>
         <item name="vpiTitlePageIndicatorStyle">@style/CustomTitlePageIndicator</item>

@@ -61,10 +61,16 @@
     <color name="common_000">#000000</color>
     <color name="common_sys">#1E88E5</color>
     <color name="common_999">#999999</color>
+    <color name="common_ccc">#cccccc</color>
     <color name="common_sys2">#f5f5dc</color>
-    <color name="common_pink">#f32b7b</color>
+    <color name="common_over_bg">#99ccff</color>
     <color name="common_green">#23b47b</color>
-
+    
+    <color name="color_day_bg">#e4ded6</color>
+    <color name="color_night_bg">#170509</color>
+    <color name="color_pager_bg1">#dfa77c</color>
+    <color name="color_pager_bg2">#914d2e</color>
+    <color name="color_pager_bg3">#332727</color>
     <!-- 标题栏 -->
     <color name="title_bar_color">#f6f6f6</color>
     <color name="title_tv_color">#f32b7b</color>

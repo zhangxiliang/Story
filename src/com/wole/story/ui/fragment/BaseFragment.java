@@ -1,6 +1,8 @@
 package com.wole.story.ui.fragment;
 
 
+import com.wole.story.app.StoryApplication;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,12 +19,14 @@ public abstract class BaseFragment extends Fragment{
 	protected View mView;
 	protected LayoutInflater mLayoutInflater;
 	protected Handler mUiHandler;
+	protected StoryApplication mStoryApplication;
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		mUiHandler=new Handler();
 		mActivity=this.getActivity();
+		mStoryApplication=mStoryApplication.getInstance();
 		mLayoutInflater = LayoutInflater.from(mActivity);
 	}
 	

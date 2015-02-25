@@ -41,7 +41,7 @@ public class StoryPresenter extends BasePresenter {
 
 	public Story parseDocument(Document document) {
 		Elements elementsByClass = document.getElementsByClass("main_txt");
-		//Story story=new Story();
+		Story story=new Story();
 		StringBuffer sb = new StringBuffer();
 		Elements elementsByTag = elementsByClass.first().getElementsByTag("div");
 		String text = elementsByClass.get(0).getElementsByTag("h1").get(0).text();

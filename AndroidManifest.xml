@@ -56,7 +56,9 @@
             android:name="com.umeng.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
-        
+         <activity android:name=".ForgetPassWdActivity" android:theme="@style/Theme.Base.AppCompat.Light" android:label="忘记密码"></activity>
+         <activity android:name=".LoginActivity" android:theme="@style/Theme.Base.AppCompat.Light" android:label="登录"></activity>
+         <activity android:name=".RegisterActivity" android:theme="@style/Theme.Base.AppCompat.Light" android:label="注册"></activity>
         <activity android:name=".StoryActivity"></activity>
         <activity
             android:name=".MainActivity"
