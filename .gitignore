@@ -1,6 +1,5 @@
 *.jar
 project.properties
 .gitignore
-story
 bin/
 libs/
